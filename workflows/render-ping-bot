@@ -1,0 +1,17 @@
+name: Render Ping Bot
+
+on:
+  schedule:
+    # Every 14 minutes between 08:00 and 20:00 UTC 
+    - cron: '*/13 5-16 * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Library Analytics API
+        run: curl -I https://library-analytics-api.onrender.com/
+
+      - name: Ping Chat App Backend
+        run: curl -I https://chat-app-backend-kfym.onrender.com/health
